@@ -1,0 +1,47 @@
+
+
+.logo {
+    display: flex;
+}
+
+.columns {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 5px 0px;
+}
+
+.column {
+    flex: 1;
+    border: 1px solid #333;
+    margin: 2px;
+    padding: 10px;
+    background:#333;
+    transition: 0.3s;
+}
+
+.navi {
+    text-align: center;
+}
+
+.activity {
+    text-align: center;
+}
+
+.location {
+    text-align: center;
+}
+
+.button {
+    padding: none;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.controls {
+    flex-direction: column;
+    display: flex;
+    align-items: left;
+}
+
