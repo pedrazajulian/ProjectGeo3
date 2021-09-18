@@ -32,6 +32,6 @@ If you happen to enjoy the use of our application or have any questions dont be 
 1. Andres Molestina
 2. David Pedraza - DavidPedraza95
 3. Joshua Gonzalez - Jalgonz
-4. Julian Pedraza
-5. Rodrick Sims
+4. Julian Pedraza - Pedrazajulian
+5. Rodrick Sims - r2sims
 6. Alex Kichigin - AKish777
