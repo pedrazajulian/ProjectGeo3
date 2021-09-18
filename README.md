@@ -1,4 +1,4 @@
-# Project #3 "MURDER"
+# Project #3 - "MURDER"
 
 ## License
 
