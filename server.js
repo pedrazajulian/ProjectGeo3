@@ -17,4 +17,34 @@ mongoose.connect(
   console.log("Connected to MongoDB!")
 );
 
+// Definition of middleware
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Serve up static assets (on heroku)
+if (process.env.NODE_ENV === "production") {
+ app.use(express.static("client/build"));
+}
+
+// We need to use sessions to keep track of our user's login status
+app.use(
+    session({
+      secret: "keyboard cat",
+      store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+      }),
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
+  
+  app.use(passport.initialize());
+  app.use(passport.session());
+  
+  app.use(routes);
+  
+  // Start the server
+  app.listen(PORT, function () {
+    console.log(`🌎  ==> Server now listening on PORT ${PORT}!`);
+  });
