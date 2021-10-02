@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajperkins92/Project-3.git"
+    "url": "git+https://github.com/pedrazajulian/ProjectGeo3"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ajperkins92/Project-3/issues"
+    "url": "https://github.com/pedrazajulian/ProjectGeo3/issues"
   },
-  "homepage": "https://github.com/ajperkins92/Project-3#readme",
+  "homepage": "https://github.com/pedrazajulian/ProjectGeo3#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.19.0",
