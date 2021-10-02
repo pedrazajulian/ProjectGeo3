@@ -107,3 +107,11 @@ router.put("/user/:id", parser.single("image"), (req, res) => {
         })
         .catch(err => res.json(err));
 });
+
+// get route to get all of the events a user is attending or organizing
+router.get("/user/:id/myevents", (req, res) => {
+    db.Users.find({ _id: req.params.id })
+        .populate("events")
+        .then(user => res.json(user))
+        .catch(err => res.json(err))
+});
