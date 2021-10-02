@@ -135,3 +135,44 @@ router.delete("/event/:id", parser.single("image"), function (req, res) {
         })
         .catch(err => res.status(422).json(err));
 });
+
+// add a user to an existing event for Attendees array field in Mongodb
+router.put("/signup/:id", function (req, res) {
+    let id = req.params.id;
+    console.log(`id for event is ${id}, userID is ${req.body.userID}`)
+    db.Events.findByIdAndUpdate(id,
+        {
+            $addToSet: { attendees: req.body.userID }
+        }).then(dbEvent => {
+            return db.Users.findByIdAndUpdate(req.body.userID,
+                { $addToSet: { events: id } },
+                { new: true })
+        })
+        .then((response) => {
+            res.json(response);
+        }).catch(err => res.status(422).json(err));
+});
+
+
+router.get("/search", (req, res) => {
+    const query = req.query.q;
+    console.log("Query is " + query);
+    db.Events.find({ $text: { $search: query } })
+        .then(events => {
+            if (events.length > 0) {
+                if (events.length > 5) {
+                    let lastFive = events.slice(Math.max(events.length - 7, 1));
+                    res.json(lastFive);
+                }
+                else {
+                    res.json(events);
+                }
+            } else {
+                res.json("No events were found. Try another search.");
+            }
+
+        })
+        .catch(err => res.status(422).json(err));
+});
+
+module.exports = router
