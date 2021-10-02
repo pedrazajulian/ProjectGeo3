@@ -17,4 +17,7 @@ mongoose.connect(
   console.log("Connected to MongoDB!")
 );
 
-
+// Definition of middleware
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
