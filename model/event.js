@@ -59,6 +59,7 @@ var EventSchema = new Schema({
 
 });
 
+//create compound index with following three fields
 EventSchema.index({name: "text", description: "text", address: "text"});
 
 // make model from event schema
