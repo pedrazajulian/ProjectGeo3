@@ -1,0 +1,51 @@
+{
+  "name": "project-3",
+  "version": "1.0.0",
+  "description": "This is our third Group Project for the UW Coding Bootcamp",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajperkins92/Project-3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajperkins92/Project-3/issues"
+  },
+  "homepage": "https://github.com/ajperkins92/Project-3#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "~2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.17.0",
+    "http-errors": "~1.6.3",
+    "moment": "^2.24.0",
+    "mongoose": "^5.8.11",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "nodemailer": "^6.4.2",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react-awesome-modal": "^2.0.5",
+    "react-google-autocomplete": "^1.1.2",
+    "react-places-autocomplete": "^7.2.1"
+  }
+}
