@@ -19,3 +19,6 @@ const storage = cloudinaryStorage({
   allowedFormats: ["jpg", "png"],
   transformation: [{ width: 1000, height: 500, crop: "limit" }],
 });
+
+// sets multers upload to the cloudinary storage
+const parser = multer({ storage: storage });
