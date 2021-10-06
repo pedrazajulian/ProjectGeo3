@@ -4,13 +4,13 @@ const passport = require("../passport");
 const parser = require("../cloudinary/cloudinary");
 const cloudinary = require("cloudinary");
 
-// getting routes for all users
+// get route for all users
 router.get("/user", function (req, res) {
     db.Users.find({})
         .then((response) => res.json(response))
 });
 
-// posting route in order to create a new user
+// post route to create a new user
 router.post("/user", parser.single("image"), (req, res) => {
     console.log("api POST request received");
     console.log(req.file);
@@ -31,7 +31,7 @@ router.post("/user", parser.single("image"), (req, res) => {
     newUser.email = req.body.email;
     newUser.image = image;
 
-    // checks if a username or email exists already, if it doesnt a new user is created
+    // checks to see if a username or email already exists, if not creates new user
     db.Users.findOne({ username: newUser.username }, (err, user) => {
         if (err) {
             console.log('User.js post error: ', err)
@@ -62,7 +62,7 @@ router.post("/user", parser.single("image"), (req, res) => {
     });
 });
 
-// get a route for specific users by using id's
+// get route for a specific user by id
 router.get("/user/:id", (req, res) => {
     console.log(`this is req.params.id ${req.params.id}`)
     db.Users.find({ _id: req.params.id })
@@ -70,31 +70,34 @@ router.get("/user/:id", (req, res) => {
         .catch(err => res.json(err))
 });
 
-// route to update the user info
+// put route to update user information
 router.put("/user/:id", parser.single("image"), (req, res) => {
     db.Users.findById(req.params.id)
         .then(user => {
+            // stores current user image id to use for deletion
             const id = user.image.id;
             let image = {};
 
-            // if uploads a new image, set image object properties to new image
+            // if the user is uploading a new image, set the image object properties to the new image
             if (req.file) {
                 console.log(req.file);
                 image.url = req.file.url;
                 image.id = req.file.public_id;
-                // takes old stored image id,then deletes it from cloudinary storage
+                // takes the old stored image id and deletes it from cloudinary storage
                 if (id) {
                     cloudinary.v2.uploader.destroy(id, (err, res) => {
                         if(err) console.log(err);
                         console.log("This is the response:" + res)
                     });
                 }
-                // if user isnt uploading a new image then set the new image object to current image object
+                // if user is not uploading a new image then set new image object to the current image object
             } else {
                 image = user.image;
                 console.log(image);
             }
             db.Users.findByIdAndUpdate(user._id, {
+                // users not allowed to change their username
+                // so update all fields except username
                 $set: {
                     firstname: req.body.firstname,
                     lastname: req.body.lastname,
@@ -108,7 +111,7 @@ router.put("/user/:id", parser.single("image"), (req, res) => {
         .catch(err => res.json(err));
 });
 
-// get route to get all of the events a user is attending or organizing
+// get route to get all events a user is attending or organizing
 router.get("/user/:id/myevents", (req, res) => {
     db.Users.find({ _id: req.params.id })
         .populate("events")
@@ -134,7 +137,7 @@ router.post('/login', (req, res, next) => {
     }
 );
 
-// post the route in order to log out
+// post route to log out
 router.post('/logout', (req, res) => {
     if (req.user) {
         req.logout()
@@ -146,3 +149,5 @@ router.post('/logout', (req, res) => {
 
 
 module.exports = router
+
+

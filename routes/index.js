@@ -4,11 +4,13 @@ const db = require("../model/index");
 const userRoutes = require("./user");
 const eventRoutes = require("./event")
 
+// router.use("/user", require("./user"));
+
 router.use(userRoutes);
 
 router.use(eventRoutes);
 
-// If API routes dont get hit, send React app
+// If no API routes are hit, send the React app
 
 router.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "../../client/public/index.html"));

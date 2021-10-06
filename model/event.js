@@ -1,6 +1,8 @@
 var mongoose = require("mongoose");
 
+// Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
+
 
 var EventSchema = new Schema({
 
@@ -59,10 +61,10 @@ var EventSchema = new Schema({
 
 });
 
-//create compound index with following three fields
 EventSchema.index({name: "text", description: "text", address: "text"});
 
-// make model from event schema
+// This creates our model from the above schema, using mongoose's model method
+//  this article is a Collection called "Books", defined by BookSchema
 var Events = mongoose.model("Events", EventSchema);
 
 module.exports = Events;
