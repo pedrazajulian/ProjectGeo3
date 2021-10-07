@@ -25,6 +25,7 @@ function Nav(props) {
             </li>
             <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
               <Link to="/myaccount">My Account</Link>
+              </li>
       </ul>
     </div>
   </nav>
@@ -43,6 +44,7 @@ function Nav(props) {
             </li>
             <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
               <Link to="/myaccount">My Account</Link>
+              </li>
   </ul>
           
     </div>
