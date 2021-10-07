@@ -6,12 +6,18 @@ import "./nav.css";
 function Nav(props) {
   return (
     <div class="navbar-fixed">
-
-<nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">CrowFunding</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+      <nav>
+        <div className="nav-wrapper">
+          <a href="/" className="brand-logo left">
+            Crowfunding!
+          </a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down" class="sidenav-trigger">
+            {/* Logging out sets state to Logged Out, and also directs you to home page */}
+            <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
+              <Link to="#">{`Welcome, ${localStorage.getItem(
+                "username"
+              )}!`}</Link>
+            </li>
             <li onClick={props.manageLogin} style={{ cursor: "pointer" }}>
               <Link to={props.loggedIn === "true" ? "/" : "/loginpage"}>
                 {props.loggedIn === "true" ? "Log Out" : "Log In"}
@@ -25,28 +31,10 @@ function Nav(props) {
             </li>
             <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
               <Link to="/myaccount">My Account</Link>
-              </li>
-      </ul>
-    </div>
-  </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-            <li onClick={props.manageLogin} style={{ cursor: "pointer" }}>
-              <Link to={props.loggedIn === "true" ? "/" : "/loginpage"}>
-                {props.loggedIn === "true" ? "Log Out" : "Log In"}
-              </Link>
             </li>
-            <li className={props.loggedIn === "true" ? "hiddenForNav" : ""}>
-              <Link to="/signup">Sign Up!</Link>
-            </li>
-            <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
-              <Link to="/myevents">My Events</Link>
-            </li>
-            <li className={props.loggedIn === "true" ? "" : "hiddenForNav"}>
-              <Link to="/myaccount">My Account</Link>
-              </li>
-  </ul>
-          
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 }
