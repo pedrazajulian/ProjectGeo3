@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajperkins92/Project-3.git"
+    "url": "git+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzFMNezaMXUc8n6FBfQ8o_wmS0KXEjrLBYvA&usqp=CAU"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ajperkins92/Project-3/issues"
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxj7kPVbX2d0L7gN_7AVB2iJAnuKXqulfPgQ&usqp=CAU"
   },
-  "homepage": "https://github.com/ajperkins92/Project-3#readme",
+  "homepage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSEcmGpFrSVnNGgqyKcMK81C1-jGSY8GiE1A&usqp=CAU",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.27.0",
