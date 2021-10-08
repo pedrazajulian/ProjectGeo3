@@ -4,8 +4,7 @@ function Statement(props) {
   return (
     <div>
       <h4>
-        Crowfunding! creates an exchange for people to discover opportunities
-        for volunteering in their community.
+        Crowfunding! For when you need bodies and don't have that many friends!
       </h4>
     </div>
   );
